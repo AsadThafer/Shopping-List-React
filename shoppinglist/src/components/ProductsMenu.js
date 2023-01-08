@@ -1,8 +1,7 @@
 import "./ProductsMenu.css";
 import Product from "./Product";
-import Product1Image from "./images/product-1.jpg";
-import Product2Image from "./images/product-2.jpg";
-import Product3Image from "./images/product-3.jpg";
+import Products from "./Products";
+
 
 function ProductsMenu() {
     return (
@@ -12,22 +11,25 @@ function ProductsMenu() {
                 </div>
                 <div className="products-menu__body">
             <Product 
-                title={'Funny RC Robot Electronic Dog'} 
-                price= {49.66}
-                rating= {4.9}
-                image = {Product1Image}
+                id = {Products[0].id}
+                title={Products[0].title}
+                price= {Products[0].price}
+                rating= {Products[0].rating}
+                image = {Products[0].image}
             />  
             <Product 
-                title={'LAPTOP ASUS TUF 15.6" '}
-                price= {1800.00}
-                rating= {4.9}
-                image = {Product2Image}
+                id = {Products[1].id}
+                title= {Products[1].title}
+                price= {Products[1].price}
+                rating= {Products[1].rating}
+                image = {Products[1].image}
             />  
             <Product 
-                title={'XBOX SERIES X '}
-                price= {500.00}
-                rating= {5}
-                image = {Product3Image}
+                id = {Products[2].id}
+                title= {Products[2].title}
+                price= {Products[2].price}
+                rating= {Products[2].rating}
+                image = {Products[2].image}
             />  
             </div>
         </div>
