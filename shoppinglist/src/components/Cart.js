@@ -1,34 +1,42 @@
-import { useState } from "react";
-import Products from "./Products";
 import "./Cart.css";
 
-const Cart = () => {
-    const [cart, setCart] = useState([]);
-    
-    const addToCart = (product) => {
-        setCart([...cart, product]);
-    };
-    
+const Cart = ({ cart, handleDelete }) => {
+  if (cart.length === 0) {
     return (
-        <div>
-        <h2 className=" My_Cart" >Cart</h2>
-        {cart.map((product) => (
-            <div key={product.id}>
-            <p>{product.title}</p>
-            <p>{product.price}</p>
-            </div>
-        ))}
-
-        {Products.map((product) => (
-            <div key={product.id}>
-            <p>{product.title}</p>
-            <p>{product.price}</p>
-            <button onClick={() => addToCart(product)}>Add to Cart</button>
-            </div>
-        ))}
-        </div>
+      <div>
+        <h2 className=" My_Cart">Cart</h2>
+        <p className=" My_Cart">Your Cart is Empty</p>
+      </div>
     );
-
-}
-
+  } else {
+    return (
+      <>
+        <h2 className=" My_Cart">Cart</h2>
+        {cart.map((product) => (
+          <div className="Product" key={product.id}>
+            <p>{product.title}</p>
+            <p>{product.price}</p>
+            <p>x{product.count}</p>
+            <button
+              className="delete_button"
+              onClick={() => handleDelete(product)}
+            >
+              Delete
+            </button>
+          </div>
+        ))}
+        <div className="Total">
+          <p>Total </p>
+          <p className="price">
+            $
+            {cart.reduce(
+              (total, product) => total + product.price * product.count,
+              0
+            )}
+          </p>
+        </div>
+      </>
+    );
+  }
+};
 export default Cart;
