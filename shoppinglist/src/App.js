@@ -3,14 +3,23 @@ import "./App.css";
 import Cart from "./components/Cart";
 import Navbar from "./components/Navbar";
 import ProductsMenu from "./components/ProductsMenu";
+import Checkout from "./components/Checkout";
 
-function App(props) {
+function App({}) {
   const [cart, setCart] = useState([]);
+
+  const handleSubmit = () => {
+    setCart([]);
+  };
   const handleDelete = ({ id }) => {
     setCart((prevcart) => {
       return prevcart.filter((product) => product.id !== id);
     });
   };
+  const totalprice = cart.reduce(
+    (total, product) => total + product.price * product.count,
+    0
+  );
 
   const HandleSuccessfullAdd = ({ id, title, price, image, rating, count }) => {
     const product = {
@@ -38,7 +47,11 @@ function App(props) {
       <Navbar />
       <main>
         <ProductsMenu onAddSuccessfull={HandleSuccessfullAdd} />
-        <Cart cart={cart} handleDelete={handleDelete} />
+        <Cart cart={cart} handleDelete={handleDelete} totalprice={totalprice} />
+        <Checkout
+          totalprice={totalprice}
+          onCheckoutSuccessfull={handleSubmit}
+        />
       </main>
     </div>
   );

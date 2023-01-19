@@ -1,6 +1,6 @@
 import "./Cart.css";
 
-const Cart = ({ cart, handleDelete }) => {
+const Cart = ({ cart, handleDelete, totalprice }) => {
   if (cart.length === 0) {
     return (
       <div>
@@ -27,13 +27,7 @@ const Cart = ({ cart, handleDelete }) => {
         ))}
         <div className="Total">
           <p>Total </p>
-          <p className="price">
-            $
-            {cart.reduce(
-              (total, product) => total + product.price * product.count,
-              0
-            )}
-          </p>
+          <p className="price">${totalprice}</p>
         </div>
       </>
     );
