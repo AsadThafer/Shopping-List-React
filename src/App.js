@@ -5,11 +5,18 @@ import Navbar from "./components/Navbar";
 import ProductsMenu from "./components/ProductsMenu";
 import Checkout from "./components/Checkout";
 
-function App({}) {
-  const [cart, setCart] = useState([]);
+const emptycart = [];
+
+function App() {
+  const [cart, setCart] = useState(emptycart);
+  const [fullname, setFullname] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleSubmit = () => {
-    setCart([]);
+    console.log("hi", cart);
+    setCart(emptycart);
+    setFullname("");
+    setEmail("");
   };
   const handleDelete = ({ id }) => {
     setCart((prevcart) => {
@@ -31,7 +38,6 @@ function App({}) {
       count,
     };
     console.log("Added to Cart", product);
-    console.log("Cart", cart);
 
     setCart((prevcart) => {
       const productInCart = prevcart.find((product) => product.id === id);
@@ -51,6 +57,10 @@ function App({}) {
         <Checkout
           totalprice={totalprice}
           onCheckoutSuccessfull={handleSubmit}
+          fullname={fullname}
+          email={email}
+          setFullname={setFullname}
+          setEmail={setEmail}
         />
       </main>
     </div>

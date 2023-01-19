@@ -1,10 +1,13 @@
 import "./Checkout.css";
-import { useState } from "react";
 
-function Checkout({ totalprice, onCheckoutSuccessfull }) {
-  const [fullname, setFullname] = useState("");
-  const [email, setEmail] = useState("");
-
+function Checkout({
+  totalprice,
+  onCheckoutSuccessfull,
+  fullname,
+  email,
+  setFullname,
+  setEmail,
+}) {
   const handleFullname = (e) => {
     setFullname(e.target.value);
   };
@@ -26,7 +29,6 @@ function Checkout({ totalprice, onCheckoutSuccessfull }) {
       alert("Please enter your email.");
       return;
     }
-
     alert(
       "Thanks " +
         fullname +
@@ -39,6 +41,8 @@ function Checkout({ totalprice, onCheckoutSuccessfull }) {
         " shortly."
     );
     onCheckoutSuccessfull();
+    setFullname("");
+    setEmail("");
   };
 
   return (
@@ -48,6 +52,7 @@ function Checkout({ totalprice, onCheckoutSuccessfull }) {
         <input
           type="text"
           placeholder="Full Name"
+          value={fullname}
           onChange={handleFullname}
           id="fullname"
           required
@@ -56,6 +61,7 @@ function Checkout({ totalprice, onCheckoutSuccessfull }) {
           type="email"
           placeholder="Email"
           id="email"
+          value={email}
           onChange={handleEmail}
           required
         />
