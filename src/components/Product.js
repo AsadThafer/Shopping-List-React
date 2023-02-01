@@ -1,7 +1,7 @@
 import "./Product.css";
 
-function Product({ id, title, price, image, rating, addedToCart, count }) {
-  const HandleAdd = (props) => {
+function Product({ id, title, price, image, rating, count, addedToCart }) {
+  const handleAdd = (props) => {
     addedToCart(props);
   };
 
@@ -19,7 +19,7 @@ function Product({ id, title, price, image, rating, addedToCart, count }) {
         {
           <button
             onClick={() =>
-              HandleAdd({
+              handleAdd({
                 id,
                 title,
                 price,
@@ -33,9 +33,7 @@ function Product({ id, title, price, image, rating, addedToCart, count }) {
           </button>
         }
       </div>
-      <div>
-        <img className="product__image" src={image} alt={title} />
-      </div>
+      <img className="product__image" src={image} alt={title} />
     </div>
   );
 }

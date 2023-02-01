@@ -41,13 +41,11 @@ function Checkout({
         " shortly."
     );
     onCheckoutSuccessfull();
-    setFullname("");
-    setEmail("");
   };
 
   return (
     <div className="checkout">
-      <h1>Checkout</h1>
+      <h1 className="checkout_title">Checkout</h1>
       <form className="checkout__inputs">
         <input
           type="text"

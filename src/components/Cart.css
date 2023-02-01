@@ -21,6 +21,7 @@
   background-color: #fff;
   width: 60%;
   margin: auto;
+  text-align: center;
 }
 .Total {
   display: flex;
@@ -50,4 +51,15 @@
   margin: 5px;
   cursor: pointer;
   font-size: 16px;
+}
+
+.cart_product_image {
+  width: 100px;
+  height: 100px;
+}
+
+@media (max-width: 900px) {
+  .Product {
+    flex-direction: column;
+  }
 }

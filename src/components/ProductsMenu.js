@@ -2,9 +2,9 @@ import "./ProductsMenu.css";
 import Product from "./Product";
 import Products from "./Products";
 
-function ProductsMenu({ onAddSuccessfull }, ...props) {
-  const HandleAddedProduct = (props) => {
-    onAddSuccessfull(props);
+function ProductsMenu({ onSuccessfullAdd }, ...props) {
+  const handleAddedProduct = (props) => {
+    onSuccessfullAdd(props);
   };
 
   return (
@@ -15,7 +15,7 @@ function ProductsMenu({ onAddSuccessfull }, ...props) {
       <div className="products-menu__body">
         {Products.map((product) => (
           <Product
-            addedToCart={HandleAddedProduct}
+            addedToCart={handleAddedProduct}
             key={product.id}
             {...product}
             count={1}
